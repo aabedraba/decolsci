@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react"
+import Image from "next/image";
 
 import { useState } from "react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
@@ -31,36 +32,32 @@ function AnimatedElement({
 
 const teamMembers = [
   {
-    name: "Dr. Amara Okonkwo",
-    title: "Principal Investigator",
-    affiliation: "University of Cape Town",
-    bio: "Dr. Okonkwo is a science policy researcher whose work focuses on research capacity building in Africa. Having navigated the barriers of international collaboration firsthand, she brings deep understanding of the structural challenges facing Global South scientists to Decolsci.",
-    initials: "AO",
-    color: "bg-primary",
+    name: "Abdallah",
+    title: "Engineer & Developer Relations",
+    affiliation: "Product Lead",
+    bio: "An engineer at heart, but rather than settling into one role, I've embraced the nature of small startup teams where I've worked as an engineer, developer relations lead, and product lead. Deeply passionate about developer tooling, communities and decolonization.",
+    image: "/abdallah.jpeg",
   },
   {
-    name: "Dr. Wei Chen",
-    title: "Co-Investigator",
-    affiliation: "National University of Singapore",
-    bio: "Dr. Chen specializes in bibliometrics and science communication. Her research on citation patterns across geographies revealed systematic underrepresentation of Global South scholarship, motivating her involvement in this systematic review.",
-    initials: "WC",
-    color: "bg-secondary",
+    name: "Minhal",
+    title: "Scientist & Engineer",
+    affiliation: "Optics & Nanomaterials",
+    bio: "Experienced scientist and engineer with deep knowledge in optics, spectroscopy, and nanomaterials. My work has spanned 0-to-1 product creation, bringing cutting-edge products to market, and in-depth technical work to de-risk and vet novel technologies in the semiconductor and metrology spaces. My research interests are in structure-function relationships of nanomaterials, specifically in understanding how the structural properties of nanomaterials affect their light emission efficiency, color, and spectral shape.",
+    image: "/minhal.jpeg",
   },
   {
-    name: "Maria Santos",
-    title: "Research Coordinator",
-    affiliation: "Universidade de São Paulo",
-    bio: "Maria is a doctoral candidate in chemistry education whose research examines how colonial legacies shape chemistry curricula in Latin America. She coordinates the literature search and extraction processes for Decolsci.",
-    initials: "MS",
-    color: "bg-accent",
+    name: "Francisco",
+    title: "Materials Scientist",
+    affiliation: "Nanomaterials & Photocatalysis",
+    bio: "Nanomaterials, inorganic synthesis of colloids, electrochemistry, photocatalysis, solar energy conversion, optoelectronic devices.",
+    image: "/francisco.jpeg",
   },
   {
-    name: "Dr. Raj Patel",
-    title: "Methods Advisor",
-    affiliation: "University of Toronto",
-    bio: "Dr. Patel brings expertise in systematic review methodology and evidence synthesis. His previous work on global health equity informs our approach to capturing diverse evidence types and ensuring methodological rigor.",
-    initials: "RP",
-    color: "bg-primary",
+    name: "Professor Avtar Singh Matharu",
+    title: "Senior Lecturer & Course Director",
+    affiliation: "Green Chemistry & Sustainable Technology",
+    bio: "Professor Avtar Singh Matharu is Senior Lecturer and PGT MSc Green Chemistry and Sustainable Industrial Technology Course Director. The GCCE is an internationally-leading academic facility for the provision of excellence in green and sustainable chemical technologies, processes and products. He has been External Examiner at Keele University for their Postgraduate Taught MSc in Environmental Science & Green Technologies. He is Editor-in-Chief of Elsevier Current Research in Green and Sustainable Chemistry. Avtar specialises in gaining high additional chemical value from otherwise low-value resources or waste such as unavoidable food supply chain wastes, developing sustainable supply chains and circular economy within the context of biorefineries.",
+    image: "/avtar.jpeg",
   },
 ];
 
@@ -91,10 +88,14 @@ function TeamMemberCard({
         aria-expanded={isExpanded}
       >
         {/* Avatar */}
-        <div
-          className={`w-20 h-20 ${member.color} rounded-full flex items-center justify-center text-white text-2xl font-serif font-bold mb-6`}
-        >
-          {member.initials}
+        <div className="w-20 h-20 rounded-full overflow-hidden mb-6 bg-gray-200">
+          <Image
+            src={member.image}
+            alt={member.name}
+            width={80}
+            height={80}
+            className="object-cover w-full h-full"
+          />
         </div>
 
         {/* Info */}
