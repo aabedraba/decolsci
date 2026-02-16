@@ -17,7 +17,7 @@ export function Footer() {
           {/* Brand */}
           <div>
             <h3 className="text-3xl font-serif font-bold text-background mb-4">
-              Decolsci
+              Sumud Labs
             </h3>
             <p className="text-background/70 leading-relaxed max-w-sm">
               A systematic scoping review mapping barriers facing Global South
@@ -33,11 +33,9 @@ export function Footer() {
             <nav className="space-y-3">
               {[
                 { id: "problem", label: "The Problem" },
-                { id: "vision", label: "Our Vision" },
-                { id: "objective", label: "Objective" },
-                { id: "methodology", label: "Methodology" },
+                { id: "work", label: "Our Work" },
                 { id: "team", label: "Team" },
-                { id: "deliverables", label: "Deliverables" },
+                { id: "support", label: "Get Involved" },
               ].map((link) => (
                 <button
                   key={link.id}
@@ -83,7 +81,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="pt-8 border-t border-background/20 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-background/60">
-            © {currentYear} Decolsci. All rights reserved.
+            © {currentYear} Sumud Labs. All rights reserved.
           </p>
           <p className="text-sm text-background/60">
             Committed to open science and epistemic justice.

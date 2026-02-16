@@ -1,7 +1,5 @@
 "use client";
 
-import React from "react"
-
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 function AnimatedElement({
@@ -30,115 +28,94 @@ function AnimatedElement({
 
 export function ProblemSection() {
   return (
-    <section id="problem" className="py-24 md:py-32 bg-background">
+    <section id="problem" className="py-10 md:py-16 bg-background">
       <div className="container mx-auto px-6 md:px-12 lg:px-24">
         {/* Section header */}
         <AnimatedElement>
-          <div className="flex items-center gap-4 mb-6">
-            <span className="text-sm font-sans font-medium text-secondary tracking-wider">
+          <div className="flex items-center gap-4 mb-4">
+            <span className="text-5xl md:text-6xl font-serif font-bold text-primary/20">
               01
             </span>
-            <div className="h-px w-12 bg-secondary" />
-            <span className="text-sm font-sans uppercase tracking-[0.15em] text-secondary">
-              The Problem
-            </span>
+            <div className="flex-1">
+              <div className="h-px bg-primary/30 mb-2" />
+              <span className="text-sm font-sans uppercase tracking-[0.2em] text-primary">
+                The Problem
+              </span>
+            </div>
           </div>
         </AnimatedElement>
 
         <AnimatedElement delay={100}>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-12 max-w-4xl text-balance">
-            Science Has a Geography Problem
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-6 text-balance">
+            Why This Matters
           </h2>
         </AnimatedElement>
 
-        {/* Two column layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-          {/* Main content */}
-          <div className="lg:col-span-7">
-            <AnimatedElement delay={200}>
-              <p className="text-lg md:text-xl text-foreground/90 leading-relaxed mb-8">
-                Global science operates under a persistent myth: that excellence
-                naturally &ldquo;trickles down&rdquo; from wealthy institutions in the
-                Global North to researchers in the Global South. This assumption
-                doesn&apos;t just fail—it actively perpetuates inequality.
-              </p>
-            </AnimatedElement>
+        <AnimatedElement delay={150}>
+          <p className="text-base md:text-lg text-foreground/90 leading-relaxed mb-8 max-w-3xl">
+            Global South researchers produce vital scientific work but face
+            systemic disadvantages that limit their participation and
+            recognition.
+          </p>
+        </AnimatedElement>
 
-            <AnimatedElement delay={300}>
-              <p className="text-lg md:text-xl text-foreground/90 leading-relaxed mb-8">
-                When a Malaysian pathologist can&apos;t pursue research because EU
-                collaborators refuse to work without their preferred samples, or
-                when an Indonesian scientist becomes a glorified sample shipper
-                for publications bearing other names, we&apos;re witnessing the
-                mechanics of structural exclusion.
-              </p>
-            </AnimatedElement>
-
-            <AnimatedElement delay={400}>
-              <p className="text-lg md:text-xl text-foreground/90 leading-relaxed mb-8">
-                The numbers tell a stark story. Between 1990 and 2013, papers
-                with at least one author from a low- or middle-income country
-                increased 2.8 times. Papers from high-income countries? They
-                increased 11.8 times over the same period.
-              </p>
-            </AnimatedElement>
-
-            <AnimatedElement delay={500}>
-              <p className="text-lg md:text-xl text-foreground/90 leading-relaxed">
-                Meanwhile, 70% of Global South researchers who travel north for
-                training stay permanently—not because they want to abandon their
-                home contexts, but because returning means sacrificing
-                resources, engagement, and career progression.
-              </p>
-            </AnimatedElement>
-          </div>
-
-          {/* Pull quote and stats sidebar */}
-          <div className="lg:col-span-5">
-            <AnimatedElement delay={350}>
-              <blockquote className="border-l-4 border-primary pl-6 py-4 mb-12">
-                <p className="text-xl md:text-2xl font-serif italic text-foreground/80 leading-relaxed">
-                  &ldquo;Many of the researchers turn their focus away from the
-                  concerns of the Global South toward the research priorities of
-                  the Global North—not by choice, but because of funding.&rdquo;
+        {/* Key Issues */}
+        <AnimatedElement delay={200}>
+          <div className="mb-8">
+            <h3 className="text-xl md:text-2xl font-serif font-semibold text-foreground mb-4">
+              Key Issues:
+            </h3>
+            <div className="space-y-4 max-w-4xl">
+              <div className="flex gap-4">
+                <span className="text-primary font-bold text-lg flex-shrink-0">
+                  •
+                </span>
+                <p className="text-base md:text-lg text-foreground/85 leading-relaxed">
+                  Language barriers require non-English speakers to pay for
+                  editing services just to publish in dominant journals
                 </p>
-              </blockquote>
-            </AnimatedElement>
-
-            {/* Stats list */}
-            <div className="space-y-6">
-              <AnimatedElement delay={450}>
-                <div className="flex items-start gap-4 p-4 bg-card border border-border">
-                  <div className="w-2 h-2 rounded-full bg-primary mt-2 shrink-0" />
-                  <p className="text-foreground/80 leading-relaxed">
-                    Language barriers force non-native English speakers to pay
-                    for professional editing
-                  </p>
-                </div>
-              </AnimatedElement>
-
-              <AnimatedElement delay={500}>
-                <div className="flex items-start gap-4 p-4 bg-card border border-border">
-                  <div className="w-2 h-2 rounded-full bg-secondary mt-2 shrink-0" />
-                  <p className="text-foreground/80 leading-relaxed">
-                    Major research organizations project future output without
-                    even acknowledging Global South contributions
-                  </p>
-                </div>
-              </AnimatedElement>
-
-              <AnimatedElement delay={550}>
-                <div className="flex items-start gap-4 p-4 bg-card border border-border">
-                  <div className="w-2 h-2 rounded-full bg-accent mt-2 shrink-0" />
-                  <p className="text-foreground/80 leading-relaxed">
-                    Global policy institutions source &ldquo;experts&rdquo; almost
-                    exclusively from the Global North
-                  </p>
-                </div>
-              </AnimatedElement>
+              </div>
+              <div className="flex gap-4">
+                <span className="text-primary font-bold text-lg flex-shrink-0">
+                  •
+                </span>
+                <p className="text-base md:text-lg text-foreground/85 leading-relaxed">
+                  Funding flows primarily to Global North institutions, even for
+                  research conducted in the Global South
+                </p>
+              </div>
+              <div className="flex gap-4">
+                <span className="text-primary font-bold text-lg flex-shrink-0">
+                  •
+                </span>
+                <p className="text-base md:text-lg text-foreground/85 leading-relaxed">
+                  70% of Global South researchers who train in wealthy countries
+                  stay there permanently, creating brain drain
+                </p>
+              </div>
+              <div className="flex gap-4">
+                <span className="text-primary font-bold text-lg flex-shrink-0">
+                  •
+                </span>
+                <p className="text-base md:text-lg text-foreground/85 leading-relaxed">
+                  Research priorities often shift toward Global North interests
+                  when funding depends on international partnerships
+                </p>
+              </div>
             </div>
           </div>
-        </div>
+        </AnimatedElement>
+
+        {/* Pull Quote */}
+        <AnimatedElement delay={300}>
+          <div className="border-l-4 border-primary pl-8 py-6 bg-card/50 max-w-4xl">
+            <blockquote className="text-xl md:text-2xl font-serif text-foreground/90 leading-relaxed italic">
+              &ldquo;Many researchers turn their focus away from the concerns of
+              the Global South toward the research priorities of the Global
+              North — not by choice, but because of funding.&rdquo;
+            </blockquote>
+          </div>
+        </AnimatedElement>
       </div>
     </section>
   );

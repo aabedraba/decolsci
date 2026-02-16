@@ -3,11 +3,11 @@ import type { Metadata } from 'next'
 import { Crimson_Pro, Work_Sans } from 'next/font/google'
 import './globals.css'
 
-const _crimsonPro = Crimson_Pro({ subsets: ["latin"], variable: "--font-serif" });
-const _workSans = Work_Sans({ subsets: ["latin"], variable: "--font-sans" });
+const crimsonPro = Crimson_Pro({ subsets: ["latin"], variable: "--font-serif" });
+const workSans = Work_Sans({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
-  title: 'Decolsci — Decolonizing Scientific Knowledge Production',
+  title: 'Sumud Labs — Decolonizing Scientific Knowledge Production',
   description: 'Mapping the barriers that prevent Global South researchers from equitable participation in chemistry and scientific knowledge production — and finding where consensus exists across studies.',
   generator: 'v0.app',
   icons: {
@@ -35,8 +35,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={`font-sans antialiased`}>
+    <html lang="en" className={`${workSans.variable} ${crimsonPro.variable}`}>
+      <body className="font-sans antialiased">
         {children}
       </body>
     </html>

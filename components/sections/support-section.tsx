@@ -30,7 +30,6 @@ function AnimatedElement({
 }
 
 const helpOptions = [
-  "I want to collaborate on the research",
   "I can provide funding or grant connections",
   "I have relevant expertise to share",
   "I want to amplify this work",
@@ -62,15 +61,48 @@ export function SupportSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const isEmailOnly =
+    formData.helpType === "I'm interested in following updates";
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+
+    try {
+      if (isEmailOnly) {
+        // Newsletter subscription endpoint (placeholder)
+        // await fetch('/api/subscribe', {
+        //   method: 'POST',
+        //   headers: { 'Content-Type': 'application/json' },
+        //   body: JSON.stringify({
+        //     fullName: formData.fullName,
+        //     email: formData.email,
+        //   }),
+        // });
+        console.log("Newsletter subscription:", {
+          fullName: formData.fullName,
+          email: formData.email,
+        });
+      } else {
+        // Full contact form endpoint (placeholder)
+        // await fetch('/api/contact', {
+        //   method: 'POST',
+        //   headers: { 'Content-Type': 'application/json' },
+        //   body: JSON.stringify(formData),
+        // });
+        console.log("Full contact form:", formData);
+      }
+
+      // Simulate API delay
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setIsSubmitting(false);
+      // TODO: Add error handling UI
+    }
   };
 
   const handleChange = (
@@ -87,59 +119,91 @@ export function SupportSection() {
   };
 
   return (
-    <section id="support" className="py-24 md:py-32 bg-background">
+    <section id="support" className="py-10 md:py-16 bg-card/30">
       <div className="container mx-auto px-6 md:px-12 lg:px-24">
         {/* Section header */}
         <AnimatedElement>
-          <div className="flex items-center gap-4 mb-6">
-            <span className="text-sm font-sans font-medium text-secondary tracking-wider">
-              07
+          <div className="flex items-center gap-4 mb-4">
+            <span className="text-5xl md:text-6xl font-serif font-bold text-secondary/20">
+              04
             </span>
-            <div className="h-px w-12 bg-secondary" />
-            <span className="text-sm font-sans uppercase tracking-[0.15em] text-secondary">
-              Support Us
-            </span>
+            <div className="flex-1">
+              <div className="h-px bg-secondary/30 mb-2" />
+              <span className="text-sm font-sans uppercase tracking-[0.2em] text-secondary">
+                Get Involved
+              </span>
+            </div>
           </div>
         </AnimatedElement>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Left side - text */}
           <div>
             <AnimatedElement delay={100}>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-8 text-balance">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-6 text-balance">
                 Join the Movement
               </h2>
             </AnimatedElement>
 
             <AnimatedElement delay={200}>
-              <p className="text-lg md:text-xl text-foreground/80 leading-relaxed mb-8">
+              <p className="text-base md:text-lg text-foreground/90 leading-relaxed mb-6">
                 This work requires collaboration across disciplines, regions,
                 and institutions. Whether you&apos;re a researcher with relevant
                 expertise, a funder interested in supporting equitable science,
-                or an advocate who wants to amplify this work—we need you.
+                or an advocate who wants to amplify this work — we need you.
               </p>
             </AnimatedElement>
 
             <AnimatedElement delay={300}>
-              <div className="bg-card border border-border p-6">
-                <p className="text-foreground/80 leading-relaxed">
-                  <strong className="text-foreground">Together,</strong> we can
-                  build a more complete picture of the barriers facing Global
-                  South researchers—and identify the most promising pathways to
-                  change.
+              <p className="text-base md:text-lg text-foreground/90 leading-relaxed mb-6">
+                Together, we can build a more complete picture of the barriers
+                facing Global South researchers and identify the most promising
+                pathways to change.
+              </p>
+            </AnimatedElement>
+
+            {/* Survey CTA */}
+            <AnimatedElement delay={350}>
+              <div className="mt-6 p-4 bg-primary/10 border-l-4 border-primary">
+                <p className="text-base font-medium text-foreground mb-2">
+                  Help us by completing our survey
                 </p>
+                <p className="text-sm text-foreground/80 mb-3">
+                  Share your experience as a researcher to inform our work.
+                </p>
+                <a
+                  href="https://forms.gle/SURVEY_LINK_PLACEHOLDER"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium hover:bg-primary/90 transition-all"
+                >
+                  Take Survey
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                    />
+                  </svg>
+                </a>
               </div>
             </AnimatedElement>
           </div>
 
           {/* Right side - form */}
           <AnimatedElement delay={400}>
-            <div className="bg-card border border-border p-6 md:p-8">
+            <div className="bg-card border border-border p-5">
               {isSubmitted ? (
-                <div className="text-center py-12">
-                  <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="text-center py-8">
+                  <div className="w-12 h-12 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
                     <svg
-                      className="w-8 h-8 text-secondary-foreground"
+                      className="w-6 h-6 text-secondary-foreground"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -152,21 +216,21 @@ export function SupportSection() {
                       />
                     </svg>
                   </div>
-                  <h3 className="text-2xl font-serif font-semibold text-foreground mb-4">
+                  <h3 className="text-xl font-serif font-semibold text-foreground mb-3">
                     Thank You!
                   </h3>
-                  <p className="text-foreground/80 leading-relaxed">
+                  <p className="text-sm text-foreground/80 leading-relaxed">
                     We&apos;ve received your submission. We&apos;ll be in touch soon
-                    about how you can contribute to Decolsci.
+                    about how you can contribute to Sumud Labs.
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-4">
                   {/* Full Name */}
                   <div>
                     <label
                       htmlFor="fullName"
-                      className="block text-sm font-medium text-foreground mb-2"
+                      className="block text-xs font-medium text-foreground mb-1.5"
                     >
                       Full Name <span className="text-primary">*</span>
                     </label>
@@ -178,7 +242,7 @@ export function SupportSection() {
                       value={formData.fullName}
                       onChange={handleChange}
                       placeholder="Your full name"
-                      className="w-full px-4 py-3 bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors text-foreground placeholder:text-muted-foreground"
+                      className="w-full px-3 py-2 text-sm bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors text-foreground placeholder:text-muted-foreground"
                     />
                   </div>
 
@@ -186,7 +250,7 @@ export function SupportSection() {
                   <div>
                     <label
                       htmlFor="email"
-                      className="block text-sm font-medium text-foreground mb-2"
+                      className="block text-xs font-medium text-foreground mb-1.5"
                     >
                       Email Address <span className="text-primary">*</span>
                     </label>
@@ -198,59 +262,15 @@ export function SupportSection() {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="your.email@institution.org"
-                      className="w-full px-4 py-3 bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors text-foreground placeholder:text-muted-foreground"
+                      className="w-full px-3 py-2 text-sm bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors text-foreground placeholder:text-muted-foreground"
                     />
-                  </div>
-
-                  {/* Affiliation */}
-                  <div>
-                    <label
-                      htmlFor="affiliation"
-                      className="block text-sm font-medium text-foreground mb-2"
-                    >
-                      Affiliation
-                    </label>
-                    <input
-                      type="text"
-                      id="affiliation"
-                      name="affiliation"
-                      value={formData.affiliation}
-                      onChange={handleChange}
-                      placeholder="University, organization, or independent"
-                      className="w-full px-4 py-3 bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors text-foreground placeholder:text-muted-foreground"
-                    />
-                  </div>
-
-                  {/* Region */}
-                  <div>
-                    <label
-                      htmlFor="region"
-                      className="block text-sm font-medium text-foreground mb-2"
-                    >
-                      Country/Region <span className="text-primary">*</span>
-                    </label>
-                    <select
-                      id="region"
-                      name="region"
-                      required
-                      value={formData.region}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors text-foreground"
-                    >
-                      <option value="">Select your region</option>
-                      {regions.map((region) => (
-                        <option key={region} value={region}>
-                          {region}
-                        </option>
-                      ))}
-                    </select>
                   </div>
 
                   {/* How can you help */}
                   <div>
                     <label
                       htmlFor="helpType"
-                      className="block text-sm font-medium text-foreground mb-2"
+                      className="block text-xs font-medium text-foreground mb-1.5"
                     >
                       How can you help? <span className="text-primary">*</span>
                     </label>
@@ -260,7 +280,7 @@ export function SupportSection() {
                       required
                       value={formData.helpType}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors text-foreground"
+                      className="w-full px-3 py-2 text-sm bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors text-foreground"
                     >
                       <option value="">Select an option</option>
                       {helpOptions.map((option) => (
@@ -271,53 +291,103 @@ export function SupportSection() {
                     </select>
                   </div>
 
-                  {/* Additional info */}
-                  <div>
+                  {/* Conditional fields - only show if NOT email-only */}
+                  {!isEmailOnly && (
+                    <>
+                      {/* Affiliation */}
+                      <div>
                     <label
-                      htmlFor="additionalInfo"
-                      className="block text-sm font-medium text-foreground mb-2"
+                      htmlFor="affiliation"
+                      className="block text-xs font-medium text-foreground mb-1.5"
                     >
-                      Additional Information
+                      Affiliation
                     </label>
-                    <textarea
-                      id="additionalInfo"
-                      name="additionalInfo"
-                      rows={4}
-                      value={formData.additionalInfo}
+                    <input
+                      type="text"
+                      id="affiliation"
+                      name="affiliation"
+                      value={formData.affiliation}
                       onChange={handleChange}
-                      placeholder="Tell us more about your interest or expertise..."
-                      className="w-full px-4 py-3 bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors text-foreground placeholder:text-muted-foreground resize-none"
+                      placeholder="University, organization, or independent"
+                      className="w-full px-3 py-2 text-sm bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors text-foreground placeholder:text-muted-foreground"
                     />
                   </div>
 
-                  {/* Subscribe checkbox */}
-                  <div className="flex items-start gap-3">
-                    <input
-                      type="checkbox"
-                      id="subscribe"
-                      name="subscribe"
-                      checked={formData.subscribe}
-                      onChange={handleChange}
-                      className="mt-1 w-4 h-4 accent-primary"
-                    />
-                    <label
-                      htmlFor="subscribe"
-                      className="text-sm text-foreground/80"
-                    >
-                      Keep me informed about project milestones and publications
-                    </label>
-                  </div>
+                      {/* Region */}
+                      <div>
+                        <label
+                          htmlFor="region"
+                          className="block text-xs font-medium text-foreground mb-1.5"
+                        >
+                          Country/Region <span className="text-primary">*</span>
+                        </label>
+                        <select
+                          id="region"
+                          name="region"
+                          required
+                          value={formData.region}
+                          onChange={handleChange}
+                          className="w-full px-3 py-2 text-sm bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors text-foreground"
+                        >
+                          <option value="">Select your region</option>
+                          {regions.map((region) => (
+                            <option key={region} value={region}>
+                              {region}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+
+                      {/* Additional info */}
+                      <div>
+                        <label
+                          htmlFor="additionalInfo"
+                          className="block text-xs font-medium text-foreground mb-1.5"
+                        >
+                          Additional Information
+                        </label>
+                        <textarea
+                          id="additionalInfo"
+                          name="additionalInfo"
+                          rows={3}
+                          value={formData.additionalInfo}
+                          onChange={handleChange}
+                          placeholder="Tell us more about your interest or expertise..."
+                          className="w-full px-3 py-2 text-sm bg-background border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors text-foreground placeholder:text-muted-foreground resize-none"
+                        />
+                      </div>
+
+                      {/* Subscribe checkbox */}
+                      <div className="flex items-start gap-2">
+                        <input
+                          type="checkbox"
+                          id="subscribe"
+                          name="subscribe"
+                          checked={formData.subscribe}
+                          onChange={handleChange}
+                          className="mt-0.5 w-4 h-4 accent-primary"
+                        />
+                        <label
+                          htmlFor="subscribe"
+                          className="text-xs text-foreground/80"
+                        >
+                          Keep me informed about project milestones and
+                          publications
+                        </label>
+                      </div>
+                    </>
+                  )}
 
                   {/* Submit button */}
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-primary text-primary-foreground py-4 px-8 font-medium text-lg transition-all duration-300 hover:bg-primary/90 hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="w-full bg-primary text-primary-foreground py-2.5 px-6 font-medium text-sm transition-all duration-300 hover:bg-primary/90 hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
                     {isSubmitting ? (
                       <>
                         <svg
-                          className="animate-spin h-5 w-5"
+                          className="animate-spin h-4 w-4"
                           viewBox="0 0 24 24"
                         >
                           <circle
@@ -337,13 +407,15 @@ export function SupportSection() {
                         </svg>
                         Submitting...
                       </>
+                    ) : isEmailOnly ? (
+                      "Subscribe to Updates"
                     ) : (
-                      "Support Decolsci"
+                      "Support Sumud Labs"
                     )}
                   </button>
 
                   {/* Privacy note */}
-                  <p className="text-xs text-muted-foreground text-center">
+                  <p className="text-xs text-muted-foreground text-center -mt-1">
                     We respect your privacy. Your information will only be used
                     for this project and will not be shared with third parties.
                   </p>

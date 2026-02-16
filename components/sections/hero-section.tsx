@@ -1,51 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useScrollAnimation, useCountUp } from "@/hooks/use-scroll-animation";
-
-function AnimatedStat({
-  value,
-  label,
-  suffix = "",
-  delay = 0,
-}: {
-  value: number | string;
-  label: string;
-  suffix?: string;
-  delay?: number;
-}) {
-  const { ref, isVisible } = useScrollAnimation(0.3);
-  const isNumeric = typeof value === "number";
-  const { count, start } = useCountUp(isNumeric ? value : 0, 2000, false);
-  const [hasStarted, setHasStarted] = useState(false);
-
-  useEffect(() => {
-    if (isVisible && !hasStarted) {
-      const timeout = setTimeout(() => {
-        start();
-        setHasStarted(true);
-      }, delay);
-      return () => clearTimeout(timeout);
-    }
-  }, [isVisible, hasStarted, start, delay]);
-
-  return (
-    <div
-      ref={ref}
-      className={`bg-card border border-border p-6 md:p-8 transition-all duration-700 ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      }`}
-      style={{ transitionDelay: `${delay}ms` }}
-    >
-      <p className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary mb-2">
-        {isNumeric ? `${count}${suffix}` : value}
-      </p>
-      <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-        {label}
-      </p>
-    </div>
-  );
-}
 
 export function HeroSection() {
   const heroRef = useRef<HTMLElement>(null);
@@ -74,42 +29,54 @@ export function HeroSection() {
         }}
       />
 
-      <div className="container mx-auto px-6 md:px-12 lg:px-24 py-24 relative z-10">
-        {/* Tag */}
-        <p className="text-xs md:text-sm uppercase tracking-[0.2em] text-primary-foreground/80 mb-6 font-sans font-medium animate-fade-in-up">
-          A Systematic Scoping Review
-        </p>
-
+      <div className="container mx-auto px-6 md:px-12 lg:px-24 py-16 relative z-10">
         {/* Main Title */}
-        <h1 className="text-6xl md:text-8xl lg:text-[12rem] font-serif font-bold text-primary-foreground mb-8 tracking-tight leading-none animate-fade-in-up animate-delay-100">
-          Decolsci
+        <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-primary-foreground mb-6 tracking-tight leading-none animate-fade-in-up">
+          Sumud Labs
         </h1>
 
-        {/* Subheadline */}
-        <p className="text-lg md:text-xl lg:text-2xl text-primary-foreground/90 max-w-3xl leading-relaxed mb-16 font-sans animate-fade-in-up animate-delay-200">
-          Mapping the barriers that prevent Global South researchers from
-          equitable participation in chemistry and scientific knowledge
-          production — and finding where consensus exists across studies.
+        {/* Tagline */}
+        <p className="text-base md:text-lg lg:text-xl text-primary-foreground/95 max-w-4xl leading-relaxed mb-16 font-sans animate-fade-in-up animate-delay-100">
+          Identifying the barriers that prevent Global South researchers from
+          contributing equally to scientific knowledge — and finding where
+          evidence points to solutions.
         </p>
 
-        {/* Statistics */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-5xl">
-          <AnimatedStat
-            value={70}
-            suffix="%"
-            label="of Global South researchers stay in Global North permanently"
-            delay={300}
-          />
-          <AnimatedStat
-            value="2.8x vs 11.8x"
-            label="LMIC authorship growth vs high-income countries"
-            delay={450}
-          />
-          <AnimatedStat
-            value="2010–2025"
-            label="Time frame of systematic review"
-            delay={600}
-          />
+        {/* Three Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl animate-fade-in-up animate-delay-200">
+          {/* Card 1: The Problem */}
+          <div className="bg-card border-2 border-primary-foreground/20 p-8 backdrop-blur-sm hover:border-primary-foreground/40 transition-all duration-300">
+            <h3 className="text-2xl md:text-3xl font-serif font-bold text-foreground mb-4">
+              The Problem
+            </h3>
+            <p className="text-sm md:text-base text-foreground/80 leading-relaxed">
+              Global South researchers face obstacles that limit their ability
+              to participate in and shape scientific knowledge production.
+            </p>
+          </div>
+
+          {/* Card 2: Our Approach */}
+          <div className="bg-card border-2 border-primary-foreground/20 p-8 backdrop-blur-sm hover:border-primary-foreground/40 transition-all duration-300">
+            <h3 className="text-2xl md:text-3xl font-serif font-bold text-foreground mb-4">
+              Our Approach
+            </h3>
+            <p className="text-sm md:text-base text-foreground/80 leading-relaxed">
+              We&apos;re systematically reviewing existing research to identify
+              which barriers appear most often and where scholars agree on
+              solutions.
+            </p>
+          </div>
+
+          {/* Card 3: The Method */}
+          <div className="bg-card border-2 border-primary-foreground/20 p-8 backdrop-blur-sm hover:border-primary-foreground/40 transition-all duration-300">
+            <h3 className="text-2xl md:text-3xl font-serif font-bold text-foreground mb-4">
+              The Method
+            </h3>
+            <p className="text-sm md:text-base text-foreground/80 leading-relaxed">
+              Analyzing 15 years of studies across chemistry, materials
+              science, and related fields to map the evidence landscape.
+            </p>
+          </div>
         </div>
       </div>
 

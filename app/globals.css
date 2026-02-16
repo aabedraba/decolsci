@@ -3,18 +3,18 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Decolsci Earth Tones Theme */
+/* Sumud Labs Earth Tones Theme */
 :root {
-  /* Clay/Terracotta Primary */
+  /* Deep Teal/Forest Green Primary */
   --background: #FDFBF7;
   --foreground: #2A2A2A;
   --card: #F4EDE3;
   --card-foreground: #2A2A2A;
   --popover: #FDFBF7;
   --popover-foreground: #2A2A2A;
-  --primary: #C65D3B;
+  --primary: #2C5F4C;
   --primary-foreground: #FDFBF7;
-  --secondary: #2C5F4C;
+  --secondary: #1A4D4D;
   --secondary-foreground: #FDFBF7;
   --muted: #F4EDE3;
   --muted-foreground: #5A5A5A;
@@ -24,21 +24,21 @@
   --destructive-foreground: #FDFBF7;
   --border: #E5DED3;
   --input: #E5DED3;
-  --ring: #C65D3B;
-  --chart-1: #C65D3B;
-  --chart-2: #2C5F4C;
+  --ring: #2C5F4C;
+  --chart-1: #2C5F4C;
+  --chart-2: #1A4D4D;
   --chart-3: #D4AF37;
   --chart-4: #8B7355;
   --chart-5: #6B8E7B;
   --radius: 0.5rem;
   --sidebar: #F4EDE3;
   --sidebar-foreground: #2A2A2A;
-  --sidebar-primary: #C65D3B;
+  --sidebar-primary: #2C5F4C;
   --sidebar-primary-foreground: #FDFBF7;
-  --sidebar-accent: #2C5F4C;
+  --sidebar-accent: #1A4D4D;
   --sidebar-accent-foreground: #FDFBF7;
   --sidebar-border: #E5DED3;
-  --sidebar-ring: #C65D3B;
+  --sidebar-ring: #2C5F4C;
 }
 
 @theme inline {

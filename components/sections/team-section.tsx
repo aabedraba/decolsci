@@ -32,32 +32,32 @@ function AnimatedElement({
 
 const teamMembers = [
   {
-    name: "Abdallah",
-    title: "Engineer & Developer Relations",
-    affiliation: "Product Lead",
-    bio: "An engineer at heart, but rather than settling into one role, I've embraced the nature of small startup teams where I've worked as an engineer, developer relations lead, and product lead. Deeply passionate about developer tooling, communities and decolonization.",
-    image: "/abdallah.jpeg",
-  },
-  {
     name: "Minhal",
     title: "Scientist & Engineer",
     affiliation: "Optics & Nanomaterials",
-    bio: "Experienced scientist and engineer with deep knowledge in optics, spectroscopy, and nanomaterials. My work has spanned 0-to-1 product creation, bringing cutting-edge products to market, and in-depth technical work to de-risk and vet novel technologies in the semiconductor and metrology spaces. My research interests are in structure-function relationships of nanomaterials, specifically in understanding how the structural properties of nanomaterials affect their light emission efficiency, color, and spectral shape.",
+    bio: "PhD in Chemistry from the University of Toronto. Passionate about making science accessible to everyone, recognizing that education is the great equalizer. Determined to connect students with resources that enable them to grow as scholars and scientists.",
     image: "/minhal.jpeg",
   },
   {
     name: "Francisco",
     title: "Materials Scientist",
     affiliation: "Nanomaterials & Photocatalysis",
-    bio: "Nanomaterials, inorganic synthesis of colloids, electrochemistry, photocatalysis, solar energy conversion, optoelectronic devices.",
+    bio: "Born and raised in Chile. PhD in physical chemistry from the University of Toronto. With a green chemistry background, he identified systemic patterns of inequality in global chemistry research and is ready to lead the paradigm shift toward equitable research.",
     image: "/francisco.jpeg",
   },
   {
     name: "Professor Avtar Singh Matharu",
     title: "Senior Lecturer & Course Director",
     affiliation: "Green Chemistry & Sustainable Technology",
-    bio: "Professor Avtar Singh Matharu is Senior Lecturer and PGT MSc Green Chemistry and Sustainable Industrial Technology Course Director. The GCCE is an internationally-leading academic facility for the provision of excellence in green and sustainable chemical technologies, processes and products. He has been External Examiner at Keele University for their Postgraduate Taught MSc in Environmental Science & Green Technologies. He is Editor-in-Chief of Elsevier Current Research in Green and Sustainable Chemistry. Avtar specialises in gaining high additional chemical value from otherwise low-value resources or waste such as unavoidable food supply chain wastes, developing sustainable supply chains and circular economy within the context of biorefineries.",
+    bio: "Senior Lecturer and MSc Course Director at the Green Chemistry Centre of Excellence. Editor-in-Chief of Elsevier Current Research in Green and Sustainable Chemistry. Specializes in developing sustainable supply chains and circular economy within biorefineries.",
     image: "/avtar.jpeg",
+  },
+  {
+    name: "Abdallah",
+    title: "Engineer & Developer Relations",
+    affiliation: "Product Lead",
+    bio: "Engineer with startup experience in engineering, developer relations, and product leadership. Deeply passionate about developer tooling, communities, and decolonization.",
+    image: "/abdallah.jpeg",
   },
 ];
 
@@ -68,7 +68,6 @@ function TeamMemberCard({
   member: (typeof teamMembers)[0];
   delay: number;
 }) {
-  const [isExpanded, setIsExpanded] = useState(false);
   const { ref, isVisible } = useScrollAnimation(0.2);
 
   return (
@@ -79,63 +78,36 @@ function TeamMemberCard({
       }`}
       style={{ transitionDelay: `${delay}ms` }}
     >
-      <div
-        className="bg-card border border-border p-6 md:p-8 cursor-pointer transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg"
-        onClick={() => setIsExpanded(!isExpanded)}
-        onKeyDown={(e) => e.key === "Enter" && setIsExpanded(!isExpanded)}
-        role="button"
-        tabIndex={0}
-        aria-expanded={isExpanded}
-      >
-        {/* Avatar */}
-        <div className="w-20 h-20 rounded-full overflow-hidden mb-6 bg-gray-200">
-          <Image
-            src={member.image}
-            alt={member.name}
-            width={80}
-            height={80}
-            className="object-cover w-full h-full"
-          />
+      <div className="bg-card border border-border p-4 transition-all duration-300 hover:border-primary/40 hover:shadow-md h-full">
+        {/* Profile Image - Circular, centered, compact */}
+        <div className="flex justify-center mb-3">
+          <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-border bg-gray-200">
+            <Image
+              src={member.image}
+              alt={member.name}
+              width={80}
+              height={80}
+              className="object-cover w-full h-full object-top"
+            />
+          </div>
         </div>
 
         {/* Info */}
-        <h3 className="text-xl md:text-2xl font-serif font-semibold text-foreground mb-1">
-          {member.name}
-        </h3>
-        <p className="text-primary font-medium mb-1">{member.title}</p>
-        <p className="text-sm text-muted-foreground mb-4">
-          {member.affiliation}
-        </p>
-
-        {/* Bio - collapsible */}
-        <div
-          className={`overflow-hidden transition-all duration-300 ${
-            isExpanded ? "max-h-48 opacity-100" : "max-h-0 opacity-0"
-          }`}
-        >
-          <p className="text-foreground/80 leading-relaxed pt-4 border-t border-border">
-            {member.bio}
+        <div className="text-center">
+          <h3 className="text-sm md:text-base font-serif font-semibold text-foreground mb-1">
+            {member.name}
+          </h3>
+          <p className="text-xs text-primary font-medium mb-1 line-clamp-2">{member.title}</p>
+          <p className="text-xs text-muted-foreground line-clamp-1">
+            {member.affiliation}
           </p>
         </div>
 
-        {/* Expand indicator */}
-        <div className="flex items-center gap-2 mt-4 text-sm text-muted-foreground">
-          <span>{isExpanded ? "Show less" : "Read bio"}</span>
-          <svg
-            className={`w-4 h-4 transition-transform duration-300 ${
-              isExpanded ? "rotate-180" : ""
-            }`}
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M19 9l-7 7-7-7"
-            />
-          </svg>
+        {/* Bio - always visible */}
+        <div className="pt-3 mt-3 border-t border-border">
+          <p className="text-foreground/80 leading-relaxed text-xs text-left">
+            {member.bio}
+          </p>
         </div>
       </div>
     </div>
@@ -144,29 +116,52 @@ function TeamMemberCard({
 
 export function TeamSection() {
   return (
-    <section id="team" className="py-24 md:py-32 bg-background">
+    <section id="team" className="py-10 md:py-16 bg-background">
       <div className="container mx-auto px-6 md:px-12 lg:px-24">
         {/* Section header */}
         <AnimatedElement>
-          <div className="flex items-center gap-4 mb-6">
-            <span className="text-sm font-sans font-medium text-secondary tracking-wider">
-              05
+          <div className="flex items-center gap-4 mb-4">
+            <span className="text-5xl md:text-6xl font-serif font-bold text-secondary/20">
+              03
             </span>
-            <div className="h-px w-12 bg-secondary" />
-            <span className="text-sm font-sans uppercase tracking-[0.15em] text-secondary">
-              The Team
-            </span>
+            <div className="flex-1">
+              <div className="h-px bg-secondary/30 mb-2" />
+              <span className="text-sm font-sans uppercase tracking-[0.2em] text-secondary">
+                The Team
+              </span>
+            </div>
           </div>
         </AnimatedElement>
 
         <AnimatedElement delay={100}>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-16 max-w-4xl text-balance">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-6 text-balance">
             Who We Are
           </h2>
         </AnimatedElement>
 
+        {/* Team intro text */}
+        <AnimatedElement delay={150}>
+          <p className="text-base md:text-lg text-foreground/90 leading-relaxed mb-6 max-w-3xl">
+            We are chemistry PhDs and software engineers with backgrounds in
+            academic research, green chemistry, and systems thinking. Through
+            extensive interactions with scientists from both Global South and
+            Global North contexts, we&apos;ve witnessed firsthand the systemic
+            inequities that shape scientific research.
+          </p>
+        </AnimatedElement>
+
+        <AnimatedElement delay={200}>
+          <p className="text-base md:text-lg text-foreground/90 leading-relaxed mb-8 max-w-3xl">
+            Our goal is to contribute to dismantling these barriers and
+            building a more equitable academic system. We aim to do this by
+            strengthening relationships between key stakeholders across regions
+            and developing programs that support equitable knowledge generation
+            and scientific innovation.
+          </p>
+        </AnimatedElement>
+
         {/* Team grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
           {teamMembers.map((member, index) => (
             <TeamMemberCard
               key={member.name}
