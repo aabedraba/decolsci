@@ -7,9 +7,10 @@ const matrixQuadrants = [
     title: "The Problem",
     subtitle: "Science has a Geography Problem",
     bullets: [
-      "The numbers tell a stark story.",
-      "Placeholder point for additional data.",
-      "Placeholder point for additional context.",
+      "Language barriers require non-English speakers to pay for editing services just to publish in dominant journals.",
+      "Funding flows primarily to Global North institutions, even for research conducted in the Global South.",
+      "70% of Global South researchers who train in wealthy countries stay there permanently, creating brain drain.",
+      "Research priorities often shift toward Global North interests when funding depends on international partnerships.",
     ],
   },
   {
@@ -66,32 +67,32 @@ export function HeroSection() {
         }}
       />
 
-      <div className="container mx-auto px-6 md:px-12 lg:px-24 pt-6 pb-9 md:pt-8 md:pb-10 lg:pt-10 lg:pb-12 relative z-10">
-        <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-primary-foreground mb-4 tracking-tight leading-none animate-fade-in-up">
+      <div className="container mx-auto px-6 md:px-12 lg:px-24 pt-5 pb-7 md:pt-7 md:pb-8 lg:pt-8 lg:pb-10 relative z-10">
+        <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-primary-foreground mb-3 tracking-tight leading-none animate-fade-in-up">
           Sumud Labs
         </h1>
 
-        <p className="text-base md:text-lg lg:text-xl text-primary-foreground/95 max-w-5xl leading-relaxed mb-4 md:mb-5 font-sans animate-fade-in-up animate-delay-100">
+        <p className="text-base md:text-lg lg:text-xl text-primary-foreground/95 max-w-5xl leading-relaxed mb-3 md:mb-4 font-sans animate-fade-in-up animate-delay-100">
           Identifying the barriers that prevent Global South researchers from
           contributing equally to scientific knowledge - and finding where
           evidence points to solutions.
         </p>
 
-        <div className="mx-auto w-full max-w-[1080px] rounded-2xl border-2 border-primary-foreground/35 bg-primary-foreground/10 p-1.5 shadow-[0_18px_40px_-26px_rgba(0,0,0,0.5)] animate-fade-in-up animate-delay-200">
+        <div className="mx-auto w-full max-w-[1080px] rounded-2xl border-2 border-primary-foreground/35 bg-primary-foreground/10 p-1 shadow-[0_18px_40px_-26px_rgba(0,0,0,0.5)] animate-fade-in-up animate-delay-200">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-primary/25 rounded-xl overflow-hidden">
             {matrixQuadrants.map((quadrant) => {
               return (
                 <article
                   key={quadrant.title}
-                  className="bg-card/95 px-4 py-5 md:px-6 md:py-6 lg:px-7 lg:py-7 min-h-[11.5rem] md:min-h-[13.5rem]"
+                  className="bg-card/95 px-4 py-4 md:px-6 md:py-5 lg:px-7 lg:py-6"
                 >
-                  <h2 className="text-2xl md:text-[2rem] lg:text-[2.2rem] font-serif font-bold text-foreground leading-[1.08] mb-2.5">
+                  <h2 className="text-2xl md:text-[2rem] lg:text-[2.2rem] font-serif font-bold text-foreground leading-[1.08] mb-2">
                     {quadrant.title}
                   </h2>
-                  <p className="text-sm md:text-base font-serif text-foreground/90 leading-snug mb-3">
+                  <p className="text-sm md:text-base font-serif text-foreground/90 leading-snug mb-2">
                     {quadrant.subtitle}
                   </p>
-                  <ul className="space-y-1.5 text-xs md:text-sm text-foreground/85 leading-relaxed font-sans">
+                  <ul className="space-y-1 text-xs md:text-sm text-foreground/85 leading-relaxed font-sans">
                     {quadrant.bullets.map((bullet, bulletIndex) => (
                       <li
                         key={`${quadrant.title}-${bulletIndex}`}
