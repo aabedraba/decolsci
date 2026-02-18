@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 function AnimatedElement({
@@ -35,6 +36,7 @@ const barrierBars = [
 ] as const;
 
 const trendValues = [22, 30, 38, 47, 56, 64, 71] as const;
+const uploadedFigureSrc = "/research-output-disparity-2002-2022.png";
 
 const timelineSteps = [
   {
@@ -73,6 +75,8 @@ const linePoints = trendValues
   .join(" ");
 
 export function FiguresSection() {
+  const [figureLoadFailed, setFigureLoadFailed] = React.useState(false);
+
   return (
     <section id="figures" className="py-12 md:py-16 bg-card/30">
       <div className="container mx-auto px-6 md:px-12 lg:px-24">
@@ -100,7 +104,7 @@ export function FiguresSection() {
         </AnimatedElement>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
-          <AnimatedElement delay={180} className="lg:col-span-7">
+          <AnimatedElement delay={180} className="lg:col-span-12">
             <div className="h-full bg-background border border-border p-5 md:p-6">
               <div className="flex items-start justify-between gap-4 mb-5">
                 <div>
@@ -108,30 +112,50 @@ export function FiguresSection() {
                     Figure A
                   </p>
                   <h3 className="text-2xl md:text-3xl font-serif font-semibold text-foreground">
-                    Barrier Intensity Snapshot
+                    Research Output Disparity and Equity (2002-2022)
                   </h3>
                 </div>
                 <span className="text-xs px-2 py-1 border border-border text-foreground/70 bg-card">
-                  Dummy
+                  Uploaded plot
                 </span>
               </div>
 
-              <div className="space-y-4">
-                {barrierBars.map((bar) => (
-                  <div key={bar.label}>
-                    <div className="flex justify-between items-center text-sm text-foreground/80 mb-1">
-                      <span>{bar.label}</span>
-                      <span className="font-medium text-primary">{bar.value}%</span>
+              {!figureLoadFailed ? (
+                <Image
+                  src={uploadedFigureSrc}
+                  alt="Research output disparity and equity chart comparing Global North and Global South from 2002 to 2022"
+                  width={1244}
+                  height={768}
+                  className="w-full h-auto border border-border bg-card"
+                  onError={() => setFigureLoadFailed(true)}
+                />
+              ) : (
+                <div className="space-y-4">
+                  <p className="text-sm text-foreground/75 leading-relaxed">
+                    Place the provided image at
+                    {" "}
+                    <code className="text-primary">
+                      public/research-output-disparity-2002-2022.png
+                    </code>
+                    {" "}
+                    to render it here.
+                  </p>
+                  {barrierBars.map((bar) => (
+                    <div key={bar.label}>
+                      <div className="flex justify-between items-center text-sm text-foreground/80 mb-1">
+                        <span>{bar.label}</span>
+                        <span className="font-medium text-primary">{bar.value}%</span>
+                      </div>
+                      <div className="h-4 border border-border bg-card">
+                        <div
+                          className="h-full bg-gradient-to-r from-primary to-secondary"
+                          style={{ width: `${bar.value}%` }}
+                        />
+                      </div>
                     </div>
-                    <div className="h-4 border border-border bg-card">
-                      <div
-                        className="h-full bg-gradient-to-r from-primary to-secondary"
-                        style={{ width: `${bar.value}%` }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              )}
             </div>
           </AnimatedElement>
 
