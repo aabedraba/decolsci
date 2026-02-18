@@ -70,46 +70,41 @@ export function HeroSection() {
         }}
       />
 
-      <div className="container mx-auto px-6 md:px-12 lg:px-24 py-14 md:py-16 lg:py-20 relative z-10">
+      <div className="container mx-auto px-6 md:px-12 lg:px-24 py-10 md:py-12 lg:py-14 relative z-10">
         <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-primary-foreground mb-6 tracking-tight leading-none animate-fade-in-up">
           Sumud Labs
         </h1>
 
-        <p className="text-base md:text-lg lg:text-xl text-primary-foreground/95 max-w-5xl leading-relaxed mb-10 md:mb-12 font-sans animate-fade-in-up animate-delay-100">
+        <p className="text-base md:text-lg lg:text-xl text-primary-foreground/95 max-w-5xl leading-relaxed mb-6 md:mb-8 font-sans animate-fade-in-up animate-delay-100">
           Identifying the barriers that prevent Global South researchers from
           contributing equally to scientific knowledge - and finding where
           evidence points to solutions.
         </p>
 
-        <div className="w-full border-2 border-primary-foreground/25 bg-card/95 shadow-[0_25px_60px_-30px_rgba(0,0,0,0.45)] animate-fade-in-up animate-delay-200">
-          <div className="grid grid-cols-1 lg:grid-cols-2">
-            {matrixQuadrants.map((quadrant, index) => {
-              const isLeftColumn = index % 2 === 0;
-              const isTopRow = index < 2;
-
+        <div className="mx-auto w-full max-w-[1080px] rounded-2xl border-2 border-primary-foreground/35 bg-primary-foreground/10 p-1.5 shadow-[0_18px_40px_-26px_rgba(0,0,0,0.5)] animate-fade-in-up animate-delay-200">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-primary/25 rounded-xl overflow-hidden">
+            {matrixQuadrants.map((quadrant) => {
               return (
                 <article
                   key={quadrant.title}
-                  className={`px-6 py-8 md:px-10 md:py-12 lg:px-12 lg:py-14 min-h-[18rem] md:min-h-[22rem] lg:min-h-[24rem] ${
-                    isLeftColumn ? "lg:border-r lg:border-border" : ""
-                  } ${isTopRow ? "lg:border-b lg:border-border" : ""}`}
+                  className="bg-card/95 px-4 py-5 md:px-6 md:py-7 lg:px-7 lg:py-8 min-h-[13rem] md:min-h-[15rem]"
                 >
-                  <p className="text-xs md:text-sm font-sans uppercase tracking-[0.2em] text-primary/80 mb-5">
+                  <p className="text-[11px] md:text-xs font-sans uppercase tracking-[0.2em] text-primary/80 mb-3">
                     {quadrant.number}
                   </p>
-                  <h2 className="text-3xl md:text-4xl lg:text-[2.8rem] font-serif font-bold text-foreground leading-[1.05] mb-4">
+                  <h2 className="text-2xl md:text-[2rem] lg:text-[2.2rem] font-serif font-bold text-foreground leading-[1.08] mb-2.5">
                     {quadrant.title}
                   </h2>
-                  <p className="text-base md:text-lg lg:text-xl font-serif text-foreground/90 leading-snug mb-6">
+                  <p className="text-sm md:text-base font-serif text-foreground/90 leading-snug mb-3.5">
                     {quadrant.subtitle}
                   </p>
-                  <ul className="space-y-3 text-sm md:text-base lg:text-lg text-foreground/85 leading-relaxed font-sans">
+                  <ul className="space-y-2 text-xs md:text-sm text-foreground/85 leading-relaxed font-sans">
                     {quadrant.bullets.map((bullet, bulletIndex) => (
                       <li
                         key={`${quadrant.title}-${bulletIndex}`}
-                        className="flex items-start gap-3"
+                        className="flex items-start gap-2.5"
                       >
-                        <span className="mt-2 block h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                        <span className="mt-1.5 block h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
                         <span>{bullet}</span>
                       </li>
                     ))}
