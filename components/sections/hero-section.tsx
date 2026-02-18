@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 
 const matrixQuadrants = [
   {
-    number: "01",
     title: "The Problem",
     subtitle: "Science has a Geography Problem",
     bullets: [
@@ -14,7 +13,6 @@ const matrixQuadrants = [
     ],
   },
   {
-    number: "02",
     title: "Our Vision",
     subtitle:
       "Global Challenges Demand Global Knowledge: Catalyzing an Equitable and Sustainable Transition",
@@ -25,7 +23,6 @@ const matrixQuadrants = [
     ],
   },
   {
-    number: "03",
     title: "Current Objective",
     subtitle:
       "Guided by Evidence, Grounded in Experience: Co-Creating a Path Forward",
@@ -36,7 +33,6 @@ const matrixQuadrants = [
     ],
   },
   {
-    number: "04",
     title: "Methodology",
     subtitle: "The Path Forward",
     bullets: [
@@ -70,12 +66,12 @@ export function HeroSection() {
         }}
       />
 
-      <div className="container mx-auto px-6 md:px-12 lg:px-24 py-10 md:py-12 lg:py-14 relative z-10">
-        <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-primary-foreground mb-6 tracking-tight leading-none animate-fade-in-up">
+      <div className="container mx-auto px-6 md:px-12 lg:px-24 pt-6 pb-9 md:pt-8 md:pb-10 lg:pt-10 lg:pb-12 relative z-10">
+        <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-primary-foreground mb-4 tracking-tight leading-none animate-fade-in-up">
           Sumud Labs
         </h1>
 
-        <p className="text-base md:text-lg lg:text-xl text-primary-foreground/95 max-w-5xl leading-relaxed mb-6 md:mb-8 font-sans animate-fade-in-up animate-delay-100">
+        <p className="text-base md:text-lg lg:text-xl text-primary-foreground/95 max-w-5xl leading-relaxed mb-4 md:mb-5 font-sans animate-fade-in-up animate-delay-100">
           Identifying the barriers that prevent Global South researchers from
           contributing equally to scientific knowledge - and finding where
           evidence points to solutions.
@@ -87,18 +83,15 @@ export function HeroSection() {
               return (
                 <article
                   key={quadrant.title}
-                  className="bg-card/95 px-4 py-5 md:px-6 md:py-7 lg:px-7 lg:py-8 min-h-[13rem] md:min-h-[15rem]"
+                  className="bg-card/95 px-4 py-5 md:px-6 md:py-6 lg:px-7 lg:py-7 min-h-[11.5rem] md:min-h-[13.5rem]"
                 >
-                  <p className="text-[11px] md:text-xs font-sans uppercase tracking-[0.2em] text-primary/80 mb-3">
-                    {quadrant.number}
-                  </p>
                   <h2 className="text-2xl md:text-[2rem] lg:text-[2.2rem] font-serif font-bold text-foreground leading-[1.08] mb-2.5">
                     {quadrant.title}
                   </h2>
-                  <p className="text-sm md:text-base font-serif text-foreground/90 leading-snug mb-3.5">
+                  <p className="text-sm md:text-base font-serif text-foreground/90 leading-snug mb-3">
                     {quadrant.subtitle}
                   </p>
-                  <ul className="space-y-2 text-xs md:text-sm text-foreground/85 leading-relaxed font-sans">
+                  <ul className="space-y-1.5 text-xs md:text-sm text-foreground/85 leading-relaxed font-sans">
                     {quadrant.bullets.map((bullet, bulletIndex) => (
                       <li
                         key={`${quadrant.title}-${bulletIndex}`}
