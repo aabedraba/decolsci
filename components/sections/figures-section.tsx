@@ -36,7 +36,7 @@ const barrierBars = [
 ] as const;
 
 const trendValues = [22, 30, 38, 47, 56, 64, 71] as const;
-const uploadedFigureSrc = "/research-output-disparity-2002-2022.png";
+const uploadedFigureSrc = "/north_south_disparity_4panel.png";
 
 const timelineSteps = [
   {
@@ -134,9 +134,7 @@ export function FiguresSection() {
                   <p className="text-sm text-foreground/75 leading-relaxed">
                     Place the provided image at
                     {" "}
-                    <code className="text-primary">
-                      public/research-output-disparity-2002-2022.png
-                    </code>
+                    <code className="text-primary">public/north_south_disparity_4panel.png</code>
                     {" "}
                     to render it here.
                   </p>
