@@ -3,8 +3,18 @@
 import { useEffect, useRef, useState } from "react";
 
 const heroCards = [
-  "Mapping and bridging the gaps that prevent Global South chemistry researchers from equitable participation in chemistry and scientific knowledge production",
-  "Towards a sustainable and equitable future",
+  {
+    title: "Motivation and Vision",
+    text: "Breaking inherent inequalities in chemistry",
+  },
+  {
+    title: "The Plan",
+    text: "Towards a sustainable and equitable future",
+  },
+  {
+    title: "Placeholder",
+    text: "Placeholder text",
+  },
 ] as const;
 
 export function HeroSection() {
@@ -41,15 +51,18 @@ export function HeroSection() {
           evidence points to solutions.
         </p>
 
-        <div className="mx-auto w-full max-w-[1080px] grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 animate-fade-in-up animate-delay-200">
-          {heroCards.map((title) => (
+        <div className="mx-auto w-full max-w-[1080px] grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 animate-fade-in-up animate-delay-200">
+          {heroCards.map((card) => (
             <article
-              key={title}
-              className="bg-card/95 border-2 border-primary-foreground/20 px-5 py-6 md:px-6 md:py-8 shadow-[0_16px_36px_-24px_rgba(0,0,0,0.5)] min-h-[130px] flex items-center"
+              key={card.title}
+              className="bg-card/95 border-2 border-primary-foreground/20 px-5 py-6 md:px-6 md:py-8 shadow-[0_16px_36px_-24px_rgba(0,0,0,0.5)] min-h-[130px] flex flex-col justify-center"
             >
               <h2 className="text-2xl md:text-[2rem] font-serif font-bold text-foreground leading-[1.08]">
-                {title}
+                {card.title}
               </h2>
+              <p className="text-sm md:text-base text-foreground/85 font-sans leading-relaxed mt-2">
+                {card.text}
+              </p>
             </article>
           ))}
         </div>
