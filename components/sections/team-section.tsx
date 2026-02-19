@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react"
+import React from "react";
 import Image from "next/image";
 
-import { useState } from "react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 function AnimatedElement({
@@ -78,10 +77,9 @@ function TeamMemberCard({
       }`}
       style={{ transitionDelay: `${delay}ms` }}
     >
-      <div className="bg-card border border-border p-4 transition-all duration-300 hover:border-primary/40 hover:shadow-md h-full">
-        {/* Profile Image - Circular, centered, compact */}
-        <div className="flex justify-center mb-3">
-          <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-border bg-gray-200">
+      <div className="bg-card border border-border p-4 md:p-5 transition-all duration-300 hover:border-primary/40 hover:shadow-md h-full">
+        <div className="flex items-start gap-4">
+          <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-border bg-gray-200 shrink-0">
             <Image
               src={member.image}
               alt={member.name}
@@ -90,24 +88,21 @@ function TeamMemberCard({
               className="object-cover w-full h-full object-top"
             />
           </div>
-        </div>
 
-        {/* Info */}
-        <div className="text-center">
-          <h3 className="text-sm md:text-base font-serif font-semibold text-foreground mb-1">
-            {member.name}
-          </h3>
-          <p className="text-xs text-primary font-medium mb-1 line-clamp-2">{member.title}</p>
-          <p className="text-xs text-muted-foreground line-clamp-1">
-            {member.affiliation}
-          </p>
-        </div>
-
-        {/* Bio - always visible */}
-        <div className="pt-3 mt-3 border-t border-border">
-          <p className="text-foreground/80 leading-relaxed text-xs text-left">
-            {member.bio}
-          </p>
+          <div className="min-w-0 flex-1">
+            <h3 className="text-sm md:text-base font-serif font-semibold text-foreground mb-1">
+              {member.name}
+            </h3>
+            <p className="text-xs md:text-sm text-primary font-medium mb-1">
+              {member.title}
+            </p>
+            <p className="text-xs md:text-sm text-muted-foreground mb-2">
+              {member.affiliation}
+            </p>
+            <p className="text-foreground/80 leading-relaxed text-xs md:text-sm">
+              {member.bio}
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -134,36 +129,40 @@ export function TeamSection() {
           </h2>
         </AnimatedElement>
 
-        {/* Team intro text */}
-        <AnimatedElement delay={150}>
-          <p className="text-base md:text-lg text-foreground/90 leading-relaxed mb-6 max-w-3xl">
-            We are chemistry PhDs and software engineers with backgrounds in
-            academic research, green chemistry, and systems thinking. Through
-            extensive interactions with scientists from both Global South and
-            Global North contexts, we&apos;ve witnessed firsthand the systemic
-            inequities that shape scientific research.
-          </p>
-        </AnimatedElement>
+        <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 md:gap-8 items-start">
+          <div className="xl:col-span-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+              {teamMembers.map((member, index) => (
+                <TeamMemberCard
+                  key={member.name}
+                  member={member}
+                  delay={200 + index * 100}
+                />
+              ))}
+            </div>
+          </div>
 
-        <AnimatedElement delay={200}>
-          <p className="text-base md:text-lg text-foreground/90 leading-relaxed mb-8 max-w-3xl">
-            Our goal is to contribute to dismantling these barriers and
-            building a more equitable academic system. We aim to do this by
-            strengthening relationships between key stakeholders across regions
-            and developing programs that support equitable knowledge generation
-            and scientific innovation.
-          </p>
-        </AnimatedElement>
+          <div className="xl:col-span-4 space-y-5">
+            <AnimatedElement delay={150}>
+              <p className="text-base md:text-lg text-foreground/90 leading-relaxed">
+                We are chemistry PhDs and software engineers with backgrounds in
+                academic research, green chemistry, and systems thinking.
+                Through extensive interactions with scientists from both Global
+                South and Global North contexts, we&apos;ve witnessed firsthand
+                the systemic inequities that shape scientific research.
+              </p>
+            </AnimatedElement>
 
-        {/* Team grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-          {teamMembers.map((member, index) => (
-            <TeamMemberCard
-              key={member.name}
-              member={member}
-              delay={200 + index * 100}
-            />
-          ))}
+            <AnimatedElement delay={200}>
+              <p className="text-base md:text-lg text-foreground/90 leading-relaxed">
+                Our goal is to contribute to dismantling these barriers and
+                building a more equitable academic system. We aim to do this by
+                strengthening relationships between key stakeholders across
+                regions and developing programs that support equitable knowledge
+                generation and scientific innovation.
+              </p>
+            </AnimatedElement>
+          </div>
         </div>
       </div>
     </section>

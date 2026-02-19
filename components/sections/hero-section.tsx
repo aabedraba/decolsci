@@ -2,45 +2,18 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const matrixQuadrants = [
+const heroCards = [
   {
-    title: "The Problem",
-    subtitle: "Science has a Geography Problem",
-    bullets: [
-      "Language barriers require non-English speakers to pay for editing services just to publish in dominant journals.",
-      "Funding flows primarily to Global North institutions, even for research conducted in the Global South.",
-      "70% of Global South researchers who train in wealthy countries stay there permanently, creating brain drain.",
-      "Research priorities often shift toward Global North interests when funding depends on international partnerships.",
-    ],
+    title: "Motivation and Vision",
+    text: "Breaking inherent inequalities in chemistry",
   },
   {
-    title: "Our Vision",
-    subtitle:
-      "Global Challenges Demand Global Knowledge: Catalyzing an Equitable and Sustainable Transition",
-    bullets: [
-      "Science claims universality, but its infrastructure is anything but universal.",
-      "From English-language dominance in journals to funding mechanisms that exclude entire regions, the current system is structurally unequal.",
-      "Global South researchers are too often treated as data collectors rather than intellectual leaders.",
-    ],
+    title: "The Plan",
+    text: "Towards a sustainable and equitable future",
   },
   {
-    title: "Current Objective",
-    subtitle:
-      "Guided by Evidence, Grounded in Experience: Co-Creating a Path Forward",
-    bullets: [
-      "We are conducting a systematic literature review of inequities in chemistry.",
-      "We are also running a survey to map barriers in scientific participation.",
-      "The survey focuses on barriers chemists in the Global South face.",
-    ],
-  },
-  {
-    title: "Methodology",
-    subtitle: "The Path Forward",
-    bullets: [
-      "Lorem ipsum placeholder point one.",
-      "Lorem ipsum placeholder point two.",
-      "Lorem ipsum placeholder point three.",
-    ],
+    title: "Placeholder",
+    text: "Placeholder text",
   },
 ] as const;
 
@@ -72,41 +45,26 @@ export function HeroSection() {
           Sumud Labs
         </h1>
 
-        <p className="text-base md:text-lg lg:text-xl text-primary-foreground/95 max-w-5xl leading-relaxed mb-3 md:mb-4 font-sans animate-fade-in-up animate-delay-100">
+        <p className="text-base md:text-lg lg:text-xl text-primary-foreground/95 max-w-5xl leading-relaxed mb-4 md:mb-5 font-sans animate-fade-in-up animate-delay-100">
           Identifying the barriers that prevent Global South researchers from
           contributing equally to scientific knowledge - and finding where
           evidence points to solutions.
         </p>
 
-        <div className="mx-auto w-full max-w-[1080px] rounded-2xl border-2 border-primary-foreground/35 bg-primary-foreground/10 p-1 shadow-[0_18px_40px_-26px_rgba(0,0,0,0.5)] animate-fade-in-up animate-delay-200">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-primary/25 rounded-xl overflow-hidden">
-            {matrixQuadrants.map((quadrant) => {
-              return (
-                <article
-                  key={quadrant.title}
-                  className="bg-card/95 px-4 py-4 md:px-6 md:py-5 lg:px-7 lg:py-6"
-                >
-                  <h2 className="text-2xl md:text-[2rem] lg:text-[2.2rem] font-serif font-bold text-foreground leading-[1.08] mb-2">
-                    {quadrant.title}
-                  </h2>
-                  <p className="text-sm md:text-base font-serif text-foreground/90 leading-snug mb-2">
-                    {quadrant.subtitle}
-                  </p>
-                  <ul className="space-y-1 text-xs md:text-sm text-foreground/85 leading-relaxed font-sans">
-                    {quadrant.bullets.map((bullet, bulletIndex) => (
-                      <li
-                        key={`${quadrant.title}-${bulletIndex}`}
-                        className="flex items-start gap-2.5"
-                      >
-                        <span className="mt-1.5 block h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
-                        <span>{bullet}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </article>
-              );
-            })}
-          </div>
+        <div className="mx-auto w-full max-w-[1080px] grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 animate-fade-in-up animate-delay-200">
+          {heroCards.map((card) => (
+            <article
+              key={card.title}
+              className="bg-card/95 border-2 border-primary-foreground/20 px-5 py-6 md:px-6 md:py-8 shadow-[0_16px_36px_-24px_rgba(0,0,0,0.5)] min-h-[130px] flex flex-col justify-center"
+            >
+              <h2 className="text-2xl md:text-[2rem] font-serif font-bold text-foreground leading-[1.08]">
+                {card.title}
+              </h2>
+              <p className="text-sm md:text-base text-foreground/85 font-sans leading-relaxed mt-2">
+                {card.text}
+              </p>
+            </article>
+          ))}
         </div>
       </div>
     </section>
