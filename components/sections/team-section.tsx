@@ -29,34 +29,52 @@ function AnimatedElement({
   );
 }
 
-const teamMembers = [
+type TeamMember = {
+  name: string;
+  title: string;
+  affiliation: string;
+  bio: string;
+  image: string;
+};
+
+const coreTeamMembers: TeamMember[] = [
   {
-    name: "Minhal",
-    title: "Scientist & Engineer",
+    name: "Minhal Hasham",
+    title: "Co-founder",
     affiliation: "Optics & Nanomaterials",
     bio: "PhD in Chemistry from the University of Toronto. Passionate about making science accessible to everyone, recognizing that education is the great equalizer. Determined to connect students with resources that enable them to grow as scholars and scientists.",
     image: "/minhal.jpeg",
   },
   {
-    name: "Francisco",
-    title: "Materials Scientist",
+    name: "Francisco Yarur Villanueva",
+    title: "Co-founder",
     affiliation: "Nanomaterials & Photocatalysis",
     bio: "Born and raised in Chile. PhD in physical chemistry from the University of Toronto. With a green chemistry background, he identified systemic patterns of inequality in global chemistry research and is ready to lead the paradigm shift toward equitable research.",
     image: "/francisco.jpeg",
   },
   {
-    name: "Professor Avtar Singh Matharu",
-    title: "Senior Lecturer & Course Director",
-    affiliation: "Green Chemistry & Sustainable Technology",
-    bio: "Senior Lecturer and MSc Course Director at the Green Chemistry Centre of Excellence. Editor-in-Chief of Elsevier Current Research in Green and Sustainable Chemistry. Specializes in developing sustainable supply chains and circular economy within biorefineries.",
-    image: "/avtar.jpeg",
-  },
-  {
-    name: "Abdallah",
-    title: "Engineer & Developer Relations",
+    name: "Abdallah Abedraba",
+    title: "Engineer",
     affiliation: "Product Lead",
     bio: "Engineer with startup experience in engineering, developer relations, and product leadership. Deeply passionate about developer tooling, communities, and decolonization.",
     image: "/abdallah.jpeg",
+  },
+] as const;
+
+const ambassadorAndAdvisorMembers: TeamMember[] = [
+  {
+    name: "Carmen Neri",
+    title: "Energy and Sustainability Scientist",
+    affiliation: "Climate Change Mitigation",
+    bio: "Engineer & Sustainability Scientist. Energy and climate change mitigation specialist, focused on issues that call for transdisciplinary efforts. Making visible how the natural sciences, engineering and technology are deeply social human activities.",
+    image: "/WhatsApp Image 2026-02-12 at 18.25.18.jpeg",
+  },
+  {
+    name: "Professor Avtar Singh Matharu",
+    title: "Senior Adviser",
+    affiliation: "Green Chemistry & Sustainable Technology",
+    bio: "Senior Lecturer and MSc Course Director at the Green Chemistry Centre of Excellence. Editor-in-Chief of Elsevier Current Research in Green and Sustainable Chemistry. Specializes in developing sustainable supply chains and circular economy within biorefineries.",
+    image: "/avtar.jpeg",
   },
 ];
 
@@ -64,7 +82,7 @@ function TeamMemberCard({
   member,
   delay,
 }: {
-  member: (typeof teamMembers)[0];
+  member: TeamMember;
   delay: number;
 }) {
   const { ref, isVisible } = useScrollAnimation(0.2);
@@ -111,28 +129,33 @@ function TeamMemberCard({
 
 export function TeamSection() {
   return (
-    <section id="team" className="py-10 md:py-16 bg-background">
+    <section id="team" className="py-10 md:py-16 bg-primary">
       <div className="container mx-auto px-6 md:px-12 lg:px-24">
         {/* Section header */}
         <AnimatedElement>
           <div className="mb-4">
-            <div className="h-px bg-secondary/30 mb-2" />
-            <span className="text-sm font-sans uppercase tracking-[0.2em] text-secondary">
+            <div className="h-px bg-primary-foreground/30 mb-2" />
+            <span className="text-sm font-sans uppercase tracking-[0.2em] text-primary-foreground/80">
               The Team
             </span>
           </div>
         </AnimatedElement>
 
         <AnimatedElement delay={100}>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-6 text-balance">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary-foreground mb-6 text-balance">
             Who We Are
           </h2>
         </AnimatedElement>
 
         <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 md:gap-8 items-start">
-          <div className="xl:col-span-8">
+          <div className="xl:col-span-8 space-y-8">
+            <AnimatedElement delay={140}>
+              <h3 className="text-xs font-sans uppercase tracking-[0.18em] text-primary-foreground/75 mb-3">
+                Core Team
+              </h3>
+            </AnimatedElement>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-              {teamMembers.map((member, index) => (
+              {coreTeamMembers.map((member, index) => (
                 <TeamMemberCard
                   key={member.name}
                   member={member}
@@ -140,11 +163,26 @@ export function TeamSection() {
                 />
               ))}
             </div>
+
+            <AnimatedElement delay={220}>
+              <h3 className="text-xs font-sans uppercase tracking-[0.18em] text-primary-foreground/75 mb-3">
+                Ambassadors and Advisors
+              </h3>
+            </AnimatedElement>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+              {ambassadorAndAdvisorMembers.map((member, index) => (
+                <TeamMemberCard
+                  key={member.name}
+                  member={member}
+                  delay={300 + index * 100}
+                />
+              ))}
+            </div>
           </div>
 
-          <div className="xl:col-span-4 space-y-5">
+          <div className="xl:col-span-4 space-y-5 xl:pt-8">
             <AnimatedElement delay={150}>
-              <p className="text-base md:text-lg text-foreground/90 leading-relaxed">
+              <p className="text-base md:text-lg text-primary-foreground/90 leading-relaxed">
                 We are chemistry PhDs and software engineers with backgrounds in
                 academic research, green chemistry, and systems thinking.
                 Through extensive interactions with scientists from both Global
@@ -154,7 +192,7 @@ export function TeamSection() {
             </AnimatedElement>
 
             <AnimatedElement delay={200}>
-              <p className="text-base md:text-lg text-foreground/90 leading-relaxed">
+              <p className="text-base md:text-lg text-primary-foreground/90 leading-relaxed">
                 Our goal is to contribute to dismantling these barriers and
                 building a more equitable academic system. We aim to do this by
                 strengthening relationships between key stakeholders across

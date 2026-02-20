@@ -5,11 +5,11 @@ import { useEffect, useRef, useState } from "react";
 const heroCards = [
   {
     title: "Motivation and Vision",
-    text: "Breaking inherent inequalities in chemistry",
+    text: "A more equitable future in chemistry",
   },
   {
     title: "The Plan",
-    text: "Towards a sustainable and equitable future",
+    text: "Breaking inherent inequalities in chemistry through data and local feedback",
   },
   {
     title: "Placeholder",
@@ -55,12 +55,12 @@ export function HeroSection() {
           {heroCards.map((card) => (
             <article
               key={card.title}
-              className="bg-card/95 border-2 border-primary-foreground/20 px-5 py-6 md:px-6 md:py-8 shadow-[0_16px_36px_-24px_rgba(0,0,0,0.5)] min-h-[130px] flex flex-col justify-center"
+              className="bg-card/95 border-2 border-primary-foreground/20 px-5 py-6 md:px-6 md:py-8 shadow-[0_16px_36px_-24px_rgba(0,0,0,0.5)] min-h-[180px] flex flex-col"
             >
-              <h2 className="text-2xl md:text-[2rem] font-serif font-bold text-foreground leading-[1.08]">
+              <h2 className="text-2xl md:text-[2rem] font-serif font-bold text-foreground leading-[1.08] min-h-[3.2rem] md:min-h-[3.8rem]">
                 {card.title}
               </h2>
-              <p className="text-sm md:text-base text-foreground/85 font-sans leading-relaxed mt-2">
+              <p className="text-sm md:text-base text-foreground/85 font-sans leading-relaxed mt-2 min-h-[4rem] md:min-h-[5rem]">
                 {card.text}
               </p>
             </article>
