@@ -180,7 +180,7 @@ export function TeamSection() {
             </div>
           </div>
 
-          <div className="xl:col-span-4 space-y-5">
+          <div className="xl:col-span-4 space-y-5 xl:pt-8">
             <AnimatedElement delay={150}>
               <p className="text-base md:text-lg text-primary-foreground/90 leading-relaxed">
                 We are chemistry PhDs and software engineers with backgrounds in
