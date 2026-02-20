@@ -31,14 +31,14 @@ function AnimatedElement({
 
 const teamMembers = [
   {
-    name: "Minhal",
+    name: "Minhal Hasham",
     title: "Co-founder",
     affiliation: "Optics & Nanomaterials",
     bio: "PhD in Chemistry from the University of Toronto. Passionate about making science accessible to everyone, recognizing that education is the great equalizer. Determined to connect students with resources that enable them to grow as scholars and scientists.",
     image: "/minhal.jpeg",
   },
   {
-    name: "Francisco",
+    name: "Francisco Yarur Villanueva",
     title: "Co-founder",
     affiliation: "Nanomaterials & Photocatalysis",
     bio: "Born and raised in Chile. PhD in physical chemistry from the University of Toronto. With a green chemistry background, he identified systemic patterns of inequality in global chemistry research and is ready to lead the paradigm shift toward equitable research.",
@@ -59,7 +59,7 @@ const teamMembers = [
     image: "/avtar.jpeg",
   },
   {
-    name: "Abdallah",
+    name: "Abdallah Abedraba",
     title: "Engineer",
     affiliation: "Product Lead",
     bio: "Engineer with startup experience in engineering, developer relations, and product leadership. Deeply passionate about developer tooling, communities, and decolonization.",
@@ -118,20 +118,20 @@ function TeamMemberCard({
 
 export function TeamSection() {
   return (
-    <section id="team" className="py-10 md:py-16 bg-background">
+    <section id="team" className="py-10 md:py-16 bg-primary">
       <div className="container mx-auto px-6 md:px-12 lg:px-24">
         {/* Section header */}
         <AnimatedElement>
           <div className="mb-4">
-            <div className="h-px bg-secondary/30 mb-2" />
-            <span className="text-sm font-sans uppercase tracking-[0.2em] text-secondary">
+            <div className="h-px bg-primary-foreground/30 mb-2" />
+            <span className="text-sm font-sans uppercase tracking-[0.2em] text-primary-foreground/80">
               The Team
             </span>
           </div>
         </AnimatedElement>
 
         <AnimatedElement delay={100}>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-6 text-balance">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary-foreground mb-6 text-balance">
             Who We Are
           </h2>
         </AnimatedElement>
@@ -151,7 +151,7 @@ export function TeamSection() {
 
           <div className="xl:col-span-4 space-y-5">
             <AnimatedElement delay={150}>
-              <p className="text-base md:text-lg text-foreground/90 leading-relaxed">
+              <p className="text-base md:text-lg text-primary-foreground/90 leading-relaxed">
                 We are chemistry PhDs and software engineers with backgrounds in
                 academic research, green chemistry, and systems thinking.
                 Through extensive interactions with scientists from both Global
@@ -161,7 +161,7 @@ export function TeamSection() {
             </AnimatedElement>
 
             <AnimatedElement delay={200}>
-              <p className="text-base md:text-lg text-foreground/90 leading-relaxed">
+              <p className="text-base md:text-lg text-primary-foreground/90 leading-relaxed">
                 Our goal is to contribute to dismantling these barriers and
                 building a more equitable academic system. We aim to do this by
                 strengthening relationships between key stakeholders across
