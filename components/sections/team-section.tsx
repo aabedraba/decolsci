@@ -29,7 +29,15 @@ function AnimatedElement({
   );
 }
 
-const teamMembers = [
+type TeamMember = {
+  name: string;
+  title: string;
+  affiliation: string;
+  bio: string;
+  image: string;
+};
+
+const coreTeamMembers: TeamMember[] = [
   {
     name: "Minhal Hasham",
     title: "Co-founder",
@@ -45,6 +53,16 @@ const teamMembers = [
     image: "/francisco.jpeg",
   },
   {
+    name: "Abdallah Abedraba",
+    title: "Engineer",
+    affiliation: "Product Lead",
+    bio: "Engineer with startup experience in engineering, developer relations, and product leadership. Deeply passionate about developer tooling, communities, and decolonization.",
+    image: "/abdallah.jpeg",
+  },
+] as const;
+
+const ambassadorAndAdvisorMembers: TeamMember[] = [
+  {
     name: "Carmen Neri",
     title: "Energy and Sustainability Scientist",
     affiliation: "Climate Change Mitigation",
@@ -58,20 +76,13 @@ const teamMembers = [
     bio: "Senior Lecturer and MSc Course Director at the Green Chemistry Centre of Excellence. Editor-in-Chief of Elsevier Current Research in Green and Sustainable Chemistry. Specializes in developing sustainable supply chains and circular economy within biorefineries.",
     image: "/avtar.jpeg",
   },
-  {
-    name: "Abdallah Abedraba",
-    title: "Engineer",
-    affiliation: "Product Lead",
-    bio: "Engineer with startup experience in engineering, developer relations, and product leadership. Deeply passionate about developer tooling, communities, and decolonization.",
-    image: "/abdallah.jpeg",
-  },
 ];
 
 function TeamMemberCard({
   member,
   delay,
 }: {
-  member: (typeof teamMembers)[0];
+  member: TeamMember;
   delay: number;
 }) {
   const { ref, isVisible } = useScrollAnimation(0.2);
@@ -137,13 +148,33 @@ export function TeamSection() {
         </AnimatedElement>
 
         <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 md:gap-8 items-start">
-          <div className="xl:col-span-8">
+          <div className="xl:col-span-8 space-y-8">
+            <AnimatedElement delay={140}>
+              <h3 className="text-xs font-sans uppercase tracking-[0.18em] text-primary-foreground/75 mb-3">
+                Core Team
+              </h3>
+            </AnimatedElement>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-              {teamMembers.map((member, index) => (
+              {coreTeamMembers.map((member, index) => (
                 <TeamMemberCard
                   key={member.name}
                   member={member}
                   delay={200 + index * 100}
+                />
+              ))}
+            </div>
+
+            <AnimatedElement delay={220}>
+              <h3 className="text-xs font-sans uppercase tracking-[0.18em] text-primary-foreground/75 mb-3">
+                Ambassadors and Advisors
+              </h3>
+            </AnimatedElement>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+              {ambassadorAndAdvisorMembers.map((member, index) => (
+                <TeamMemberCard
+                  key={member.name}
+                  member={member}
+                  delay={300 + index * 100}
                 />
               ))}
             </div>

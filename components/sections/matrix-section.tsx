@@ -1,6 +1,15 @@
 "use client";
 
-const matrixQuadrants = [
+import Image from "next/image";
+
+type MatrixQuadrant = {
+  title: string;
+  subtitle: string;
+  bullets: string[];
+  iconSrc?: string;
+};
+
+const matrixQuadrants: MatrixQuadrant[] = [
   {
     title: "The Facts",
     subtitle:
@@ -15,6 +24,7 @@ const matrixQuadrants = [
     title: "Our Vision",
     subtitle:
       "Global challenges demand global knowledge. We will catalyze the transition to equitable and sustainable research in chemistry.",
+    iconSrc: "/Untitled.png",
     bullets: [],
   },
   {
@@ -37,7 +47,7 @@ const matrixQuadrants = [
       "Beta-version deployment",
     ],
   },
-] as const;
+];
 
 export function MatrixSection() {
   return (
@@ -63,7 +73,7 @@ export function MatrixSection() {
                   <p className="text-lg md:text-xl font-serif text-foreground/90 leading-snug mb-3">
                     {quadrant.subtitle}
                   </p>
-                  {quadrant.bullets.length > 0 && (
+                  {quadrant.bullets.length > 0 ? (
                     <ul className="space-y-2 text-base md:text-lg text-foreground/85 leading-relaxed font-sans">
                       {quadrant.bullets.map((bullet, bulletIndex) => (
                         <li
@@ -75,7 +85,18 @@ export function MatrixSection() {
                         </li>
                       ))}
                     </ul>
-                  )}
+                  ) : quadrant.iconSrc ? (
+                    <div className="flex items-center justify-center py-2">
+                      <Image
+                        src={quadrant.iconSrc}
+                        alt=""
+                        width={56}
+                        height={56}
+                        className="h-14 w-14 object-contain md:h-16 md:w-16"
+                        aria-hidden="true"
+                      />
+                    </div>
+                  ) : null}
                 </article>
               );
             })}
