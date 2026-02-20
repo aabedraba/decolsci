@@ -2,6 +2,7 @@ import React from "react"
 import type { Metadata } from 'next'
 import { Crimson_Pro, Work_Sans } from 'next/font/google'
 import './globals.css'
+import { TopNav } from "@/components/top-nav";
 
 const crimsonPro = Crimson_Pro({ subsets: ["latin"], variable: "--font-serif" });
 const workSans = Work_Sans({ subsets: ["latin"], variable: "--font-sans" });
@@ -37,6 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${workSans.variable} ${crimsonPro.variable}`}>
       <body className="font-sans antialiased">
+        <TopNav />
         {children}
       </body>
     </html>

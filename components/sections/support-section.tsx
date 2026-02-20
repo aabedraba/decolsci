@@ -123,16 +123,11 @@ export function SupportSection() {
       <div className="container mx-auto px-6 md:px-12 lg:px-24">
         {/* Section header */}
         <AnimatedElement>
-          <div className="flex items-center gap-4 mb-4">
-            <span className="text-5xl md:text-6xl font-serif font-bold text-secondary/20">
-              04
+          <div className="mb-4">
+            <div className="h-px bg-secondary/30 mb-2" />
+            <span className="text-sm font-sans uppercase tracking-[0.2em] text-secondary">
+              Get Involved
             </span>
-            <div className="flex-1">
-              <div className="h-px bg-secondary/30 mb-2" />
-              <span className="text-sm font-sans uppercase tracking-[0.2em] text-secondary">
-                Get Involved
-              </span>
-            </div>
           </div>
         </AnimatedElement>
 

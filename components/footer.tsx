@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -45,6 +47,12 @@ export function Footer() {
                   {link.label}
                 </button>
               ))}
+              <Link
+                href="/news"
+                className="block text-background/80 hover:text-background transition-colors"
+              >
+                News
+              </Link>
             </nav>
           </div>
 
